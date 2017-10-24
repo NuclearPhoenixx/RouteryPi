@@ -152,11 +152,11 @@ Note: Don't forget to edit the GPIO pins according to how you soldered your LEDs
 
 Detailed speedtest results will come soon! 
 
-So far the WiFi range seems to proves quite good, I'll test it once more and put some more details here!
+So far the WiFi range seems to be quite good, I'll test it once more and put some more detail here!
 
 ## Optional
 
-* You could add an automatic speedtest with [!speedtest-cli-extras](https://github.com/HenrikBengtsson/speedtest-cli-extras) by utilizing crontab and outputting the results in a file. You'll have more convincing arguments when contacting your ISP because your connection is not what you paid for ;)
+* You could add an automatic speedtest with [speedtest-cli-extras](https://github.com/HenrikBengtsson/speedtest-cli-extras) by utilizing crontab and outputting the results in a file. You'll have more convincing arguments when contacting your ISP because your connection is not what you paid for ;)
 
 * You could remove some unused software from your pi to decrease the disk size even more - although this will only clean up some 10s of MBytes. Stuff you could remove would be e.g. vim-common, triggerhappy, bluez and so on. You can get a list of all installed packages by typing ```apt list --installed```. Don't forget to do ```sudo apt autoremove``` afterwards!
 
@@ -166,6 +166,6 @@ So far the WiFi range seems to proves quite good, I'll test it once more and put
 
 ---
 
-Everyone who dislikes calling 'WLAN' 'WiFi' because of simplicity: SORRY.
+Everyone who dislikes calling 'WLAN' 'WiFi' which I did because of simplicity: SORRY.
 
 © 2017 RouteryPi, Phoenix1747.
