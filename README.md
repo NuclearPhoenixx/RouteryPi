@@ -154,6 +154,8 @@ Detailed speedtest results will come soon!
 
 So far the WiFi range seems to be quite good, I'll test it once more and put some more detail here!
 
+I will also provide some info about the power consumption. Stay tuned!
+
 ## Optional
 
 * You could add an automatic speedtest with [speedtest-cli-extras](https://github.com/HenrikBengtsson/speedtest-cli-extras) by utilizing crontab and outputting the results in a file. You'll have more convincing arguments when contacting your ISP because your connection is not what you paid for ;)
