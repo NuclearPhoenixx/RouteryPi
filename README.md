@@ -28,7 +28,6 @@ Optional:
 - USB OTG port
 - 802.11 b/g/n wireless LAN
 - 40 GPIO pins
-- Latest version of Raspbian (Stretch)
 - Some other stuff, that isn't relevant to this project. For full specs visit https://www.raspberrypi.org/products/raspberry-pi-zero-w/
 
 **OTG Ethernet:**
@@ -40,16 +39,23 @@ Optional:
 
 ## Software
 
-Text will follow!
+This build uses the latest version of Raspbian which is Raspbian Stretch. You can download it on the official RaspberryPi website, at https://www.raspberrypi.org/downloads/raspbian/. I guess you already know how to flash the image onto the SD Card - however, if you don't have a look at this tutorial: https://www.raspberrypi.org/documentation/installation/installing-images/
+
+You will also need Python (my scripts use 2.7) if you have some LEDs and want to easily program them as status LEDs.
+If you aim to do something like that be ready to also install python-pip and some packages like psutil.
+
+The heart of this whole installation will be 'hostapd' and 'bridge-utils' because we will be using the Pi as a network bridge between the LAN and WiFi. This means that **you will need an additonal DHCP and DNS server**. Nevertheless, this simplifies the whole installation a lot and makes it less error-prone. If you already have a router (which I assume you do) you can plug in your RouteryPi via LAN and everything will work out of the box.
+
+Note: You will need **no additional drivers** for anything!
 
 ## Installation
 
-Text will follow!
+Working on it!
 
 ## Performance
 
-Text will follow!
+Working on it!
 
 ---
 
-2017, Phoenix1747.
+by Phoenix1747, 2017.
