@@ -2,6 +2,8 @@
 
 ## Summary
 
+**Hey there! I'm working on this. Please be patient while I add more text and add some images. Thanks =)**
+
 The RouteryPi is a WiFi access point based on a Raspberry Pi Zero W. Together with a pretty case and some status LEDs it makes a really nice alternative AP that can easily be programmed and customized. The only downside of using a Raspberry Pi is it's relative slow networking speed compared to high quality retail APs - nevertheless it has great potential and makes an even better addition if you want to upgrade some random old AP that you found in your basement!
 
 ## Hardware
@@ -50,7 +52,101 @@ Note: You will need **no additional drivers** for anything!
 
 ## Installation
 
-Working on it!
+**Preparation**
+
+The first step is, obviously, to install the image onto the SD Card and booting it up. The first boot usually takes longer than a normal startup because the Pi has to do stuff like generating new SSH keys and so on.
+
+Then use ```sudo raspi-config``` to configure the Pi to your linkings.
+
+Now update it using ```sudo apt update && sudo apt full-upgrade``` - once it's done updating reboot it and we'll start with the actual AP installation.
+
+**AP setup**
+
+Firstly, install hostapd and bridge-utils with the following command.
+```
+sudo apt-get install hostapd bridge-utils
+```
+
+Now comes the important part. After the installation go on and edit the hostapd.conf.
+```
+sudo nano /etc/hostapd/hostapd.conf
+```
+
+If the file is not empty, just delete it's content. We will be using a custom config anyways. The minimal config that you should use too looks like that:
+```
+# Bridge mode
+bridge=br0
+
+# Networking interface
+interface=wlan0
+
+# WiFi configuration
+ssid=RouteryPi
+channel=1
+hw_mode=g
+country_code=US
+ieee80211n=1
+ieee80211d=1
+wmm_enabled=1
+
+# WiFi security
+auth_algs=1
+wpa=2
+wpa_key_mgmt=WPA-PSK
+rsn_pairwise=CCMP
+wpa_passphrase=YourCustomPasswordWhichShouldBePrettyStrong123$%
+```
+Just paste the text into the hostapd config file, save it and you're good to go.
+
+To create and use the network bridge we only have to edit one more file. Now edit the network interfaces file like that:
+```
+sudo nano /etc/network/interfaces
+```
+Delete anything that's in here and paste the following configuration:
+```
+auto lo
+iface lo inet loopback
+
+# Ethernet
+auto eth0
+allow-hotplug eth0
+iface eth0 inet manual
+
+# WiFi
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet manual
+wireless-power off
+
+# Bridge
+auto br0
+iface br0 inet dhcp
+bridge_ports eth0 wlan0
+bridge_fd 0
+bridge_stp off
+```
+This will result in the Pi using DHCP which means it can be used in **any** network. The downside of this is that you have to find out the IP address if you want to, let's say, use SSH. You could use a static IP address by changing the br0 interface config a little bit - just google 'static ip raspberry pi'. (For the lazy: https://duckduckgo.com/?q=static+ip+raspberry+pi)
+
+**Final steps**
+
+After you did a quick reboot using ```sudo reboot```, you can start testing the whole thing. To test the hostapd config use this command: ```sudo hostapd /etc/hostapd/hostapd.conf```. Note: If it does exit without you doing something, then there is something wrong with it. To go into debug mode use ```sudo hostapd -dd /etc/hostapd/hostapd.conf```.
+
+While testing the hostapd config you can also try connecting as a client. If you've done everything correctly you should be able to do so without any problems.
+
+To enable hostapd to run upon boot you have to edit one more file.
+```
+sudo nano /etc/default/hostapd
+```
+
+Now paste this text into the file and save it:
+```
+RUN_DAEMON=yes
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+```
+
+You're ready to go! From now on hostapd will start whenever your Pi boots up. If you're working with status LEDs, you can download my python scripts, put it in some folder like ~/led/ and paste ```@reboot python /home/YOURUSERNAME/led/start.py``` into crontab by using ```sudo crontab -e```. Done!
+
+Note: Don't forget to edit the GPIO pins according to how you soldered your LEDs!
 
 ## Performance
 
@@ -58,4 +154,6 @@ Working on it!
 
 ---
 
-by Phoenix1747, 2017.
+Everyone who dislikes calling 'WLAN' 'WiFi' because of simplicity: SORRY.
+
+© 2017 RouteryPi, Phoenix1747.
