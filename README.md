@@ -150,7 +150,19 @@ Note: Don't forget to edit the GPIO pins according to how you soldered your LEDs
 
 ## Performance
 
-Working on it!
+Detailed speedtest results will come soon! 
+
+So far the WiFi range seems to proves quite good, I'll test it once more and put some more details here!
+
+## Optional
+
+* You could add an automatic speedtest with [!speedtest-cli-extras](https://github.com/HenrikBengtsson/speedtest-cli-extras) by utilizing crontab and outputting the results in a file. You'll have more convincing arguments when contacting your ISP because your connection is not what you paid for ;)
+
+* You could remove some unused software from your pi to decrease the disk size even more - although this will only clean up some 10s of MBytes. Stuff you could remove would be e.g. vim-common, triggerhappy, bluez and so on. You can get a list of all installed packages by typing ```apt list --installed```. Don't forget to do ```sudo apt autoremove``` afterwards!
+
+* You could also solder an external antenna onto the Pi if you aren't satisfied with it's range. The Pi Zero W has tiny solder pads for soldering a U.FL RF connector. Together with a small adapter cable you could use your standard WiFi antennas. You can read into this with a nice tutorial like this one: http://www.briandorey.com/post/Raspberry-Pi-Zero-W-external-antenna-mod
+
+* Security Related: Raspbian Stretch is **no longer vulnerable to the WPA2 Krack attack**. Since the system got patched you are totally safe with using the RouteryPi as AP **as long as all your clients are secure**. So please immediately update your system! 
 
 ---
 
