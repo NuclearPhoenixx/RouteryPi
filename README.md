@@ -2,7 +2,7 @@
 
 ## Summary
 
-The RouteryPi is a WiFi access point based on a Raspberry Pi Zero W. Together with a pretty case and some status LEDs it makes a really nice alternative AP that can easily be programmed and customized. The only downside of using a Raspberry Pi is it's relative slow networking speed compared to high quality(!) retail APs - nevertheless it has great potential and makes an even better addition if you want to upgrade some random old AP that you found in your basement!
+The RouteryPi is a WiFi access point based on a Raspberry Pi Zero W. Together with a pretty case and some status LEDs it makes a really nice alternative AP that can easily be programmed and customized. The only downside of using a Raspberry Pi is it's relative slow networking speed compared to high quality retail APs - nevertheless it has great potential and makes an even better addition if you want to upgrade some random old AP that you found in your basement!
 
 ## Hardware
 
@@ -148,9 +148,21 @@ Note: Don't forget to edit the GPIO pins according to how you soldered your LEDs
 
 ## Performance
 
-Detailed speedtest results will come soon! 
+**Network speed**
 
-So far the WiFi range seems to be quite good, I'll test it once more and put some more detail here!
+I tested the RouteryPi under the following conditions:
+
+![normal results](https://phoenix1747.github.io/host/normal_result.png)
+
+One thing to take into consideration is that I (unfairly) tested my 5GHz WiFi which the Raspberry Pi Zero W cannot provide. I have to admit the results are not that great, especially compared to my normal connection. But if you don't have a fast connection in the first place, this will be sufficent. Although the results seem pretty poor, I tested if you could watch Full HD (1080p) Youtube videos and play a little game like Minecraft on a server and it worked just fine!
+
+![routery results](https://phoenix1747.github.io/host/routery_result.png)
+
+**WiFi Range**
+
+The WiFi range is pretty good for it's small size. Without any external antenna, i.e. only using the tiny onboard antenna, I achieved only slightly less (~2-3m) range than with my ISP's router. The overall range depends heavily on walls and is in my case round about 8m (through 3 walls)
+
+**Power consumption**
 
 I will also provide some info about the power consumption. Stay tuned!
 
@@ -172,6 +184,8 @@ I will also provide some info about the power consumption. Stay tuned!
 ![image4](https://phoenix1747.github.io/host/image4.png)
 ![image5](https://phoenix1747.github.io/host/image5.png)
 ![image6](https://phoenix1747.github.io/host/image6.png)
+![image7](https://phoenix1747.github.io/host/image7.png)
+![image8](https://phoenix1747.github.io/host/image8.png)
 
 
 Note: I'm still waiting for some parts to arrive, so the hardware-side of my build isn't completely finished yet. I'm going to update these photos as soon as I'm finished!
