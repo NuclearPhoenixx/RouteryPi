@@ -4,7 +4,7 @@
 
 **Hey there! I'm working on this. I'll add some images in the next couple of days and update some missing text. Thanks for your patience! :D**
 
-The RouteryPi is a WiFi access point based on a Raspberry Pi Zero W. Together with a pretty case and some status LEDs it makes a really nice alternative AP that can easily be programmed and customized. The only downside of using a Raspberry Pi is it's relative slow networking speed compared to high quality retail APs - nevertheless it has great potential and makes an even better addition if you want to upgrade some random old AP that you found in your basement!
+The RouteryPi is a WiFi access point based on a Raspberry Pi Zero W. Together with a pretty case and some status LEDs it makes a really nice alternative AP that can easily be programmed and customized. The only downside of using a Raspberry Pi is it's relative slow networking speed compared to high quality(!) retail APs - nevertheless it has great potential and makes an even better addition if you want to upgrade some random old AP that you found in your basement!
 
 ## Hardware
 
@@ -165,6 +165,18 @@ I will also provide some info about the power consumption. Stay tuned!
 * You could also solder an external antenna onto the Pi if you aren't satisfied with it's range. The Pi Zero W has tiny solder pads for soldering a U.FL RF connector. Together with a small adapter cable you could use your standard WiFi antennas. You can read into this with a nice tutorial like this one: http://www.briandorey.com/post/Raspberry-Pi-Zero-W-external-antenna-mod
 
 * Security Related: Raspbian Stretch is **no longer vulnerable to the WPA2 Krack attack**. Since the system got patched you are totally safe with using the RouteryPi as AP **as long as all your clients are secure**. So please immediately update your system! 
+
+## Images
+
+![image1](https://phoenix1747.github.io/host/image1.png)
+![image2](https://phoenix1747.github.io/host/image2.png)
+![image3](https://phoenix1747.github.io/host/image3.png)
+![image4](https://phoenix1747.github.io/host/image4.png)
+![image5](https://phoenix1747.github.io/host/image5.png)
+![image6](https://phoenix1747.github.io/host/image6.png)
+
+
+Note: I'm still waiting for some parts to arrive, so the hardware-side of my build isn't completely finished yet. I'm going to update these photos as soon as I'm finished!
 
 ---
 
