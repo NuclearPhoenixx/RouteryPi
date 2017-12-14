@@ -1,7 +1,15 @@
+#!/usr/bin/python
 import RPi.GPIO as GPIO
 from time import sleep
-import subprocess
-import os
+from subprocess import check_output, Popen
+from os import system
+from psutil import cpu_percent
+
+# Import all the other python scripts
+import host
+import ethernet
+import cpu
+import connection
 
 pin1 = 24
 pin2 = 23
@@ -24,7 +32,8 @@ GPIO.setup(pin7,GPIO.OUT)
 x = 7
 stime = 0.05
 
-while not 'hostapd' in subprocess.check_output(['ps','-A']):
+while not 'hostapd' in check_output(['ps','-A']):
+
   try:
     if x==7:
       wpin1 = pin1
@@ -60,13 +69,14 @@ while not 'hostapd' in subprocess.check_output(['ps','-A']):
 GPIO.output(pin1,GPIO.HIGH)
 GPIO.output(wpin1,GPIO.LOW)
 GPIO.output(wpin2,GPIO.LOW)
-subprocess.Popen('sudo python /home/pi/led/connection.py',shell=True)
-subprocess.Popen('sudo python /home/pi/led/ethernet.py',shell=True)
-subprocess.Popen('sudo python /home/pi/led/cpu.py',shell=True)
-subprocess.Popen('sudo python /home/pi/led/host.py',shell=True)
 
-os.system("sudo apt-get update")
-update = os.system("sudo apt-get dist-upgrade -s |grep -P '^\d+ upgraded'|cut -d" " -f1").read()
+Popen('sudo python /home/pi/led/connection.py',shell=True)
+Popen('sudo python /home/pi/led/ethernet.py',shell=True)
+Popen('sudo python /home/pi/led/cpu.py',shell=True)
+Popen('sudo python /home/pi/led/host.py',shell=True)
+
+system("sudo apt-get update")
+update = system("sudo apt-get dist-upgrade -s |grep -P '^\d+ upgraded'|cut -d" " -f1").read()
 
 if (update != '0'):
   GPIO.output(pin3,GPIO.HIGH)
