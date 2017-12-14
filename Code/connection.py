@@ -1,7 +1,7 @@
 #!/usr/bin/python
-#import RPi.GPIO as GPIO
-#from time import sleep
-#from os import system
+import RPi.GPIO as GPIO
+from time import sleep
+from os import system
 
 pin = 22
 
