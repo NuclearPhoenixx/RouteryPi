@@ -3,17 +3,19 @@
 #from time import sleep
 #from subprocess import check_output
 
-pin = 24
+def hostFunction():
+  
+  pin = 24
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-GPIO.setup(pin,GPIO.OUT)
+  GPIO.setmode(GPIO.BCM)
+  GPIO.setwarnings(False)
+  GPIO.setup(pin,GPIO.OUT)
 
-while True:
+  while True:
 
-  if 'hostapd' in check_output(['ps','-A']):
-    GPIO.output(pin,GPIO.HIGH)
-  else:
-    GPIO.output(pin,GPIO.LOW)
+    if 'hostapd' in check_output(['ps','-A']):
+      GPIO.output(pin,GPIO.HIGH)
+    else:
+      GPIO.output(pin,GPIO.LOW)
 
-  sleep(4)
+    sleep(4)
