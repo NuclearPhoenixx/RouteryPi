@@ -9,8 +9,8 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(pin,GPIO.OUT)
 
-def hostFunction():
-  
+while True:
+
   if 'hostapd' in check_output(['ps','-A']):
     GPIO.output(pin,GPIO.HIGH)
   else:

@@ -18,8 +18,8 @@ def connection():
   else:
     return False
 
-def connectionFunction():
-  
+while True:
+
   if connection():
     GPIO.output(pin,GPIO.HIGH)
   else:

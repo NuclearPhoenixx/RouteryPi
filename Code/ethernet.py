@@ -9,7 +9,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(pin,GPIO.OUT)
 
-def ethernetFunction():
+while True:
 
   eth = check_output('cat /sys/class/net/eth0/operstate', shell=True)
 

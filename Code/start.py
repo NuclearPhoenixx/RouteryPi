@@ -2,13 +2,7 @@
 import RPi.GPIO as GPIO
 from time import sleep
 from subprocess import check_output, Popen
-from os import system
-
-# Import all the other python scripts
-import host
-import ethernet
-import cpu
-import connection
+import os import system
 
 pin1 = 24
 pin2 = 23
@@ -32,7 +26,6 @@ x = 7
 stime = 0.05
 
 while not 'hostapd' in check_output(['ps','-A']):
-
   try:
     if x==7:
       wpin1 = pin1
@@ -68,13 +61,13 @@ while not 'hostapd' in check_output(['ps','-A']):
 GPIO.output(pin1,GPIO.HIGH)
 GPIO.output(wpin1,GPIO.LOW)
 GPIO.output(wpin2,GPIO.LOW)
+Popen('sudo python /home/pi/led/connection.py',shell=True)
+Popen('sudo python /home/pi/led/ethernet.py',shell=True)
+Popen('sudo python /home/pi/led/cpu.py',shell=True)
+Popen('sudo python /home/pi/led/host.py',shell=True)
 
-#Popen('sudo python /home/pi/led/connection.py',shell=True)
-#Popen('sudo python /home/pi/led/ethernet.py',shell=True)
-#Popen('sudo python /home/pi/led/cpu.py',shell=True)
-#Popen('sudo python /home/pi/led/host.py',shell=True)
-while True:
-  connectionFunction()
-  cpuFunction()
-  ethernetFunction()
-  hostFunction()
+system("sudo apt-get update")
+update = system("sudo apt-get dist-upgrade -s |grep -P '^\d+ upgraded'|cut -d" " -f1").read()
+
+if (update != '0'):
+  GPIO.output(pin3,GPIO.HIGH)
