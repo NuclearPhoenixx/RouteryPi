@@ -2,7 +2,7 @@
 import RPi.GPIO as GPIO
 from time import sleep
 from subprocess import check_output, Popen
-import os import system
+from os import system
 
 pin1 = 24
 pin2 = 23
