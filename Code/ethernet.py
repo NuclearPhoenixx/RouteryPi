@@ -3,21 +3,19 @@
 #from time import sleep
 #from subprocess import check_output
 
+pin = 27
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(pin,GPIO.OUT)
+
 def ethernetFunction():
 
-  pin = 27
+  eth = check_output('cat /sys/class/net/eth0/operstate', shell=True)
 
-  GPIO.setmode(GPIO.BCM)
-  GPIO.setwarnings(False)
-  GPIO.setup(pin,GPIO.OUT)
+  if 'up' in eth:
+    GPIO.output(pin,GPIO.HIGH)
+  else:
+    GPIO.output(pin,GPIO.LOW)
 
-  while True:
-
-    eth = check_output('cat /sys/class/net/eth0/operstate', shell=True)
-
-    if 'up' in eth:
-      GPIO.output(pin,GPIO.HIGH)
-    else:
-      GPIO.output(pin,GPIO.LOW)
-
-    sleep(2)
+  sleep(2)
