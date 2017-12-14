@@ -69,13 +69,12 @@ GPIO.output(pin1,GPIO.HIGH)
 GPIO.output(wpin1,GPIO.LOW)
 GPIO.output(wpin2,GPIO.LOW)
 
-Popen('sudo python /home/pi/led/connection.py',shell=True)
-Popen('sudo python /home/pi/led/ethernet.py',shell=True)
-Popen('sudo python /home/pi/led/cpu.py',shell=True)
-Popen('sudo python /home/pi/led/host.py',shell=True)
-
-system("sudo apt-get update")
-update = system("sudo apt-get dist-upgrade -s |grep -P '^\d+ upgraded'|cut -d" " -f1").read()
-
-if (update != '0'):
-  GPIO.output(pin3,GPIO.HIGH)
+#Popen('sudo python /home/pi/led/connection.py',shell=True)
+#Popen('sudo python /home/pi/led/ethernet.py',shell=True)
+#Popen('sudo python /home/pi/led/cpu.py',shell=True)
+#Popen('sudo python /home/pi/led/host.py',shell=True)
+while True:
+  connectionFunction()
+  cpuFunction()
+  ethernetFunction()
+  hostFunction()
