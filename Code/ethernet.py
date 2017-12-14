@@ -1,7 +1,7 @@
 #!/usr/bin/python
-#import RPi.GPIO as GPIO
-#from time import sleep
-#from subprocess import check_output
+import RPi.GPIO as GPIO
+from time import sleep
+from subprocess import check_output
 
 pin = 27
 
