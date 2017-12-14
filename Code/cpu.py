@@ -1,6 +1,6 @@
 #!/usr/bin/python
-#import RPi.GPIO as GPIO
-#from time import sleep
+import RPi.GPIO as GPIO
+from time import sleep
 from psutil import cpu_percent
 
 pin = 23
