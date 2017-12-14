@@ -3,7 +3,6 @@ import RPi.GPIO as GPIO
 from time import sleep
 from subprocess import check_output, Popen
 from os import system
-from psutil import cpu_percent
 
 # Import all the other python scripts
 import host
