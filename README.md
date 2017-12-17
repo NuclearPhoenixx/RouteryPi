@@ -188,11 +188,6 @@ I will also provide some info about the power consumption. Stay tuned!
 ![image7](https://phoenix1747.github.io/host/image7.png)
 ![image8](https://phoenix1747.github.io/host/image8.png)
 
-
-Note: I'm still waiting for some parts to arrive, so the hardware-side of my build isn't completely finished yet. I'm going to update these photos when I'm done.
-
 ---
 
-Everyone who dislikes calling 'WLAN' 'WiFi' which I did because of simplicity: I'm sincerely sorry.
-
-© 2017 RouteryPi, Phoenix1747.
+© 2017 RouteryPi.
