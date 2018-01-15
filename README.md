@@ -58,7 +58,17 @@ Then use ```sudo raspi-config``` to configure the Pi to your likings.
 
 Now update it using ```sudo apt update && sudo apt full-upgrade``` - once it's done reboot it and we'll start with the actual AP installation.
 
-**AP setup**
+**Automatic installation**
+
+If you don't want to manually install all the required stuff, you can use my auto-installer sript. It can be found here in the `master` branch called `install.sh`.
+
+The obvious advantage is that you don't need to know any technical stuff since this will do everything for you. However, this also comes with the disadvantage that it might not
+work for every Raspbian installation, since there are hard-coded paths and parameters in the script which have to match with the system.
+
+To use the script, go ahead and download it. After that you can easily start it using `sh install.sh` or `chmod +x install.sh` and then `./install.sh`. The installer will guide you
+through every important step.
+
+**Manual AP setup**
 
 Firstly, install hostapd and bridge-utils with the following command.
 ```
@@ -175,7 +185,7 @@ I will also provide some info about the power consumption. Stay tuned!
 
 * You could also solder an external antenna onto the Pi if you aren't satisfied with it's range. The Pi Zero W has tiny solder pads for soldering a U.FL RF connector. Together with a small adapter cable you could use your standard WiFi antennas. You can read into this with a nice tutorial like this one: http://www.briandorey.com/post/Raspberry-Pi-Zero-W-external-antenna-mod
 
-* Security related: Raspbian Stretch is **no longer vulnerable to the WPA2 Krack attack**. Since the system got patched you are totally safe with using any Raspberry Pi as AP or client**as long as all your other devices are secure**. So please always update your system! 
+* Security related: Raspbian Stretch is **no longer vulnerable to the WPA2 Krack attack**. Since the system got patched you are totally safe with using any Raspberry Pi as AP or client**as long as all your other devices are secure**. So please always update your system!
 
 ## Images
 
