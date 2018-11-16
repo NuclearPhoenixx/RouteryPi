@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Check for any errors, quit if any
-function check_errors {
+check_errors() {
   if ! [ $? = 0 ]
   then
     echo "An error occured! Aborting...."
@@ -61,7 +61,7 @@ else
 fi
 
 echo "Writing hostapd.conf..."
-sudo sh -c "echo $a>/etc/hostapd/hostapd.conf"
+sudo sh -c "echo '$a'>/etc/hostapd/hostapd.conf"
 check_errors
 echo "Successfully wrote hostapd.conf!"
 
@@ -97,7 +97,7 @@ else
 fi
 
 echo "Writing /etc/network/interfaces..."
-sudo sh -c "echo $a>/etc/network/interfaces"
+sudo sh -c "echo '$a'>/etc/network/interfaces"
 check_errors
 echo "Successfully wrote /etc/network/interfaces!"
 
@@ -106,7 +106,7 @@ a="
 RUN_DAEMON=yes
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 "
-sudo sh -c "echo $a>/etc/default/hostapd"
+sudo sh -c "echo '$a'>/etc/default/hostapd"
 check_errors
 echo "Successfully wrote /etc/default/hostapd!"
 
