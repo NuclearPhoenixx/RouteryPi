@@ -2,57 +2,27 @@
 
 ## Summary
 
-RouteryPi is a WiFi access point based on a Raspberry Pi Zero W. Together with a pretty case and some status LEDs it makes a really nice alternative to a commercial AP because of easy programming and customization. The only downside of using a Raspberry Pi is it's relatively slow networking speed compared to high quality retail APs - nevertheless it has great potential and makes an even better addition if you want to upgrade some generic old AP that you found in your basement!
+RouteryPi is a WiFi access point originally based on the Raspberry Pi Zero W. Together with a nice looking case and some status LEDs it makes a fun alternative to a commercial AP because of easy programming and customization. The only downside of using a Raspberry Pi is it's relatively slow networking speed compared to high quality retail APs - nevertheless it has great potential and makes an even better addition if you want to upgrade some generic old AP that you found in your basement!
 
 ## Hardware
 
-You will need the following parts for this project:
-- A neat looking case maybe with holes for status lights. Reusing an old router case would be ideal here (Yay, upcycling!)
-- A Raspberry Pi Zero W
-- An OTG Ethernet Adapter (USB 2.0)
-- A MicroSD card (anything class 6 and higher will do actually)
-- A good power supply and connector (1A more than enough!)
-- Some wire to connect everything
+This will run on any newer Raspberry Pi generation aiming at the ones with onboard WiFi, however this probably also works with compatible WiFi and LAN dongles.
 
-Optional:
-- Some LEDs and resistors if you want status LEDs
-- A push button to reset the Pi
-- On/Off switch (to kill the power obviously)
-- A heatsink - not needed, but your Pi will thank you
-
-## Specs
-
-**Raspberry Pi Zero W:**
-- 1GHz, single-core CPU
-- 512MB RAM
-- USB OTG port (2.0)
-- 802.11 b/g/n 2.4 GHz wireless LAN
-- 40 GPIO pins
-- Some other stuff, that's not relevant to this project. For full specs visit https://www.raspberrypi.org/products/raspberry-pi-zero-w/
-
-**OTG Ethernet:**
-- USB 2.0 OTG to 10/100 Fast Ethernet
-- Standard RJ45 Ethernet port
-- No external power required
-- Link and Activity LEDs
-- More info about the one I bought, at https://plugable.com/products/usb2-otge100/
+To get the best performance possible use the latest full-size Raspberry Pi available.
 
 ## Software
 
 This build uses the latest version of Raspbian which is Raspbian Stretch. You can download it on the official Raspberry Pi website, at https://www.raspberrypi.org/downloads/raspbian/. I guess you already know how to flash the image onto the SD Card - if you don't however, have a look at this tutorial: https://www.raspberrypi.org/documentation/installation/installing-images/
 
-You will also need Python (my scripts use 2.7) if you have some LEDs and want to easily program them like status LEDs.
-If you aim to do something like that be ready to also install python-pip and some packages like psutil.
+The heart of this whole installation will be 'hostapd' and 'bridge-utils' because we will be using the Pi as a network bridge between the LAN and WiFi. This means that **you will need an additonal DHCP and DNS server**. Nevertheless, this simplifies the whole installation a lot and makes it less error-prone. If you already have a router (which I assume you do) you can connect it to your RouteryPi and everything will work out of the box.
 
-The heart of this whole installation will be 'hostapd' and 'bridge-utils' because we will be using the Pi as a network bridge between the LAN and WiFi. This means that **you will need an additonal DHCP and DNS server**. Nevertheless, this simplifies the whole installation a lot and makes it less error-prone. If you already have a router (which I assume you do) you can connect it with your RouteryPi and everything will work out of the box.
-
-Note: You will need **no additional drivers** at all!
+You will need no additional drivers at all!
 
 ## Installation
 
 **Preparation**
 
-The first step is, obviously, to install the image onto the SD Card and booting it up. The first boot usually takes longer than a normal startup because the Pi has to do stuff like generating new SSH keys and so on.
+The first step is, obviously, to install the image onto the uSD Card and booting it up. The first boot usually takes longer than a normal startup because the Pi has to do first time stuff like generating new SSH keys and so on.
 
 Then use ```sudo raspi-config``` to configure the Pi to your likings.
 
@@ -60,13 +30,11 @@ Now update it using ```sudo apt update && sudo apt full-upgrade``` - once it's d
 
 **Automatic installation**
 
-If you don't want to manually install all the required stuff, you can use my auto-installer sript. It can be found here in the `master` branch called `install.sh`.
+If you don't want to manually install all the required stuff, you can use my auto-installer sript. It can be found [here](install.sh).
 
-The obvious advantage is that you don't need to know any technical stuff since this will do everything for you. However, this also comes with the disadvantage that it might not
-work for every Raspbian installation, since there are hard-coded paths and parameters in the script which have to match with the system.
+The obvious advantage is that you don't need to know any technical stuff since this will do everything for you. However, this also comes with the disadvantage that it might not work for every customized Raspbian installation, since there are hard-coded paths and parameters in the script which have to match with the system.
 
-To use the script, go ahead and download it. After that you can easily start it using `sh install.sh` or `chmod +x install.sh` and then `./install.sh`. The installer will guide you
-through every important step.
+To use the script just type `sh install.sh` into the terminal. The installer will then guide you through every step of the installation.
 
 **Manual AP setup**
 
@@ -102,7 +70,7 @@ auth_algs=1
 wpa=2
 wpa_key_mgmt=WPA-PSK
 rsn_pairwise=CCMP
-wpa_passphrase=YourCustom!PassWordWhichShou1dBePrettyStronG123$%
+wpa_passphrase=SomeStrongPassword
 ```
 Just paste the text into the hostapd config file, edit ```country_code=US``` to your country, save it and you're good to go.
 
@@ -157,25 +125,15 @@ You're ready to go! From now on hostapd will start whenever your Pi boots up. If
 
 Note: Don't forget to edit the GPIO pins according to how you soldered your LEDs!
 
-## Performance
+## Speed
 
-**Network speed**
-
-I tested the RouteryPi under the following conditions:
+I tested my RouteryPi (Raspberry Pi W) under the following conditions:
 
 ![normal results](https://phoenix1747.github.io/host/normal_result.png)
 
 One thing to take into consideration is that I (unfairly) tested my 5GHz WiFi which the Raspberry Pi Zero W cannot provide. I have to admit the RouteryPi's results are not that great, especially compared to my normal connection. But if you don't have a fast connection in the first place, this will be sufficent. Although the results seem pretty poor, I tested if you could watch Full HD (1080p) Youtube videos and play a little game like Minecraft on a server and it worked just fine!
 
 ![routery results](https://phoenix1747.github.io/host/routery_result.png)
-
-**WiFi Range**
-
-The WiFi range is pretty good for it's small size. Without any external antenna, i.e. only using the tiny onboard antenna, I achieved only slightly less (~2-3m) range than with my ISP's router. The overall range depends heavily on walls and is in my case round about 6m (through 3 walls!)
-
-**Power consumption**
-
-I will also provide some info about the power consumption. Stay tuned!
 
 ## Optional
 
@@ -185,19 +143,4 @@ I will also provide some info about the power consumption. Stay tuned!
 
 * You could also solder an external antenna onto the Pi if you aren't satisfied with it's range. The Pi Zero W has tiny solder pads for soldering a U.FL RF connector. Together with a small adapter cable you could use your standard WiFi antennas. You can read into this with a nice tutorial like this one: http://www.briandorey.com/post/Raspberry-Pi-Zero-W-external-antenna-mod
 
-* Security related: Raspbian Stretch is **no longer vulnerable to the WPA2 Krack attack**. Since the system got patched you are totally safe with using any Raspberry Pi as AP or client**as long as all your other devices are secure**. So please always update your system!
-
-## Images
-
-![image1](https://phoenix1747.github.io/host/image1.png)
-![image2](https://phoenix1747.github.io/host/image2.png)
-![image3](https://phoenix1747.github.io/host/image3.png)
-![image4](https://phoenix1747.github.io/host/image4.png)
-![image5](https://phoenix1747.github.io/host/image5.png)
-![image6](https://phoenix1747.github.io/host/image6.png)
-![image7](https://phoenix1747.github.io/host/image7.png)
-![image8](https://phoenix1747.github.io/host/image8.png)
-
----
-
-© 2017 RouteryPi.
+* Security related: Raspbian Stretch is **no longer vulnerable to the WPA2 Krack attack**. Since the system got patched you are totally safe with using any Raspberry Pi as AP or client **as long as all your other devices are secure**. So please always update your system!
