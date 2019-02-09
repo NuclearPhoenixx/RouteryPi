@@ -1,5 +1,7 @@
 # RouteryPi
 
+![issues](https://img.shields.io/github/issues/Phoenix1747/RouteryPi.svg?style=for-the-badge) ![open pr](https://img.shields.io/github/issues-pr-raw/phoenix1747/RouteryPi.svg?style=for-the-badge)
+
 ## Summary
 
 RouteryPi is a WiFi access point originally based on the Raspberry Pi Zero W. Together with a nice looking case and some status LEDs it makes a fun alternative to a commercial AP because of easy programming and customization. The only downside of using a Raspberry Pi is it's relatively slow networking speed compared to high quality retail APs - nevertheless it has great potential and makes an even better addition if you want to upgrade some generic old AP that you found in your basement!
