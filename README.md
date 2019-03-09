@@ -30,15 +30,7 @@ Then use ```sudo raspi-config``` to configure the Pi to your likings.
 
 Now update it using ```sudo apt update && sudo apt full-upgrade``` - once it's done reboot it and we'll start with the actual AP installation.
 
-**Automatic installation**
-
-If you don't want to manually install all the required stuff, you can use my auto-installer sript. It can be found [here](install.sh).
-
-The obvious advantage is that you don't need to know any technical stuff since this will do everything for you. However, this also comes with the disadvantage that it might not work for every customized Raspbian installation, since there are hard-coded paths and parameters in the script which have to match with the system.
-
-To use the script just type `sh install.sh` into the terminal. The installer will then guide you through every step of the installation.
-
-**Manual AP setup**
+**AP setup**
 
 Firstly, install hostapd and bridge-utils with the following command.
 ```
