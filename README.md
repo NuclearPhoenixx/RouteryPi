@@ -115,9 +115,7 @@ RUN_DAEMON=yes
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 ```
 
-You're ready to go! From now on hostapd will start whenever your Pi boots up. If you're working with status LEDs, you can download my python scripts, put it in some folder like ~/led/ and paste ```@reboot python /home/YOURUSERNAME/led/start.py``` into crontab by using ```sudo crontab -e```. Done!
-
-Note: Don't forget to edit the GPIO pins according to how you soldered your LEDs!
+You're ready to go! From now on hostapd will start whenever your Pi boots up.
 
 ## Speed
 
