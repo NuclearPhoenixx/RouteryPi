@@ -117,6 +117,16 @@ DAEMON_CONF="/etc/hostapd/hostapd.conf"
 
 You're ready to go! From now on hostapd will start whenever your Pi boots up.
 
+## Autostart issue
+
+Some users reported issues with the above mentioned method of autostarting hostapd. From hostapd's side this should all work, but for some reason it looks like Raspbian doesn't like that anymore. The latest workaround is to paste the following commands to overwrite Raspbian's default masking of hostapd. See issue #5 for more info.
+
+```sh
+sudo systemctl unmask hostapd
+sudo systemctl enable hostapd
+sudo systemctl start hostapd
+```
+
 ## Speed
 
 I tested my RouteryPi (Raspberry Pi W) under the following conditions:
