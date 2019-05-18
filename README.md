@@ -131,11 +131,11 @@ sudo systemctl start hostapd
 
 I tested my RouteryPi (Raspberry Pi W) under the following conditions:
 
-![normal results](https://phoenix1747.github.io/host/normal_result.png)
+![normal results](screenshots/normal_result.png)
 
 One thing to take into consideration is that I (unfairly) tested my 5GHz WiFi which the Raspberry Pi Zero W cannot provide. I have to admit the RouteryPi's results are not that great, especially compared to my normal connection. But if you don't have a fast connection in the first place, this will be sufficent. Although the results seem pretty poor, I tested if you could watch Full HD (1080p) Youtube videos and play a little game like Minecraft on a server and it worked just fine!
 
-![routery results](https://phoenix1747.github.io/host/routery_result.png)
+![routery results](screenshots/routery_result.png)
 
 ## Optional
 
