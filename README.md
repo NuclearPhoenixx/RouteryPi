@@ -4,7 +4,9 @@
 
 ## Summary
 
-RouteryPi is a WiFi access point originally based on the Raspberry Pi Zero W. Together with a nice looking case and some status LEDs it makes a fun alternative to a commercial AP because of easy programming and customization. The only downside of using a Raspberry Pi is it's relatively slow networking speed compared to high quality retail APs - nevertheless it has great potential and makes an even better addition if you want to upgrade some generic old AP that you found in your basement!
+RouteryPi is a WiFi access point originally based on the Raspberry Pi Zero W. Together with a nice looking case and some status LEDs it makes a fun alternative to a commercial AP combining ease of setup and highly customizable software. The only downside of using a Raspberry Pi is it's relatively slow networking speed compared to high quality retail APs - nevertheless it has great potential and makes an even better addition if you want to upgrade some generic old AP that you found in your basement!
+
+**Update:** The brand new Raspberry Pi 4 features some really nice networking features. With an even faster CPU, 2.4 and 5GHz ac  WiFi, stand-alone Gigabit Ethernet and optional Power over Ethernet it looks like it can deliver "real" networking performance!
 
 ## Hardware
 
@@ -26,9 +28,9 @@ You will need no additional drivers at all!
 
 The first step is, obviously, to install the image onto the uSD Card and booting it up. The first boot usually takes longer than a normal startup because the Pi has to do first time stuff like generating new SSH keys and so on.
 
-Then use ```sudo raspi-config``` to configure the Pi to your likings.
+Then use `sudo raspi-config` to configure the Pi to your likings.
 
-Now update it using ```sudo apt update && sudo apt full-upgrade``` - once it's done reboot it and we'll start with the actual AP installation.
+Now update it using `sudo apt update && sudo apt full-upgrade` - once it's done reboot it and we'll start with the actual AP installation.
 
 **AP setup**
 
@@ -66,7 +68,8 @@ wpa_key_mgmt=WPA-PSK
 rsn_pairwise=CCMP
 wpa_passphrase=SomeStrongPassword
 ```
-Just paste the text into the hostapd config file, edit ```country_code=US``` to your country, save it and you're good to go.
+Just paste the text into the hostapd config file, edit `country_code=US` to your country, save it and you're good to go.
+You should then update `wpa_passphrase` to your custom WiFi password and optionally `channel` to another WiFi channel.
 
 To create and use the network bridge we only have to edit one more file. Now edit the network interfaces file like that:
 ```
@@ -96,11 +99,11 @@ bridge_ports eth0 wlan0
 bridge_fd 0
 bridge_stp off
 ```
-This will result in the Pi using DHCP which means it can be used in **any** network. The downside of this is that you have to find out the IP address if you want to, let's say, use SSH. You could use a static IP address by changing the **br0**(!) interface config a little bit - just google 'static ip raspberry pi'. (For the lazy: https://duckduckgo.com/?q=static+ip+raspberry+pi)
+This will result in the Pi using DHCP which means it can be used in **any existing** network. The downside of this is that you have to find out the IP address if you want to, let's say, use SSH. You could use a static IP address by changing the **br0**(!) interface config a little bit - just google 'static ip raspberry pi'. (For the lazy: https://duckduckgo.com/?q=static+ip+raspberry+pi)
 
 **Final steps**
 
-After you did a quick reboot using ```sudo reboot```, you can start testing the whole thing. To test the hostapd config use this command: ```sudo hostapd /etc/hostapd/hostapd.conf```. Note: If it does exit without you doing something, then there is something wrong with it. To go into debug mode use ```sudo hostapd -dd /etc/hostapd/hostapd.conf```.
+After you did a quick reboot using `sudo reboot`, you can start testing the whole thing. To test the hostapd config use this command: `sudo hostapd /etc/hostapd/hostapd.conf`. Note: If it does exit without you doing something, then there is something wrong with it. To go into debug mode use `sudo hostapd -dd /etc/hostapd/hostapd.conf`.
 
 While testing the hostapd config you can also try connecting as a client. If you've done everything correctly you should be able to do so without any problems.
 
@@ -141,8 +144,8 @@ One thing to take into consideration is that I (unfairly) tested my 5GHz WiFi wh
 
 * You could add an automatic speedtest with [speedtest-cli-extras](https://github.com/HenrikBengtsson/speedtest-cli-extras) by utilizing crontab and outputting the results in a file. You'll have more convincing arguments when contacting your ISP in case something's not working again ;)
 
-* You could remove some unused software from your pi to decrease the disk size even more - although this will only clean up some 10s of MBytes. Stuff you could remove would be e.g. vim-common, triggerhappy, bluez and so on. You can get a list of all installed packages by typing ```apt list --installed```. Don't forget to do ```sudo apt autoremove``` afterwards!
+* You could remove some unused software from your pi to decrease the disk size even more - although this will only clean up some 10s of MBytes. Raspbian Lite is already pretty slim. Stuff you could remove would be e.g. vim-common, triggerhappy, bluez and so on. You can get a list of all installed packages by typing `apt list --installed`. Don't forget to do `sudo apt autoremove` afterwards!
 
-* You could also solder an external antenna onto the Pi if you aren't satisfied with it's range. The Pi Zero W has tiny solder pads for soldering a U.FL RF connector. Together with a small adapter cable you could use your standard WiFi antennas. You can read into this with a nice tutorial like this one: http://www.briandorey.com/post/Raspberry-Pi-Zero-W-external-antenna-mod
+* You could also solder an external antenna onto the Pi if you aren't satisfied with it's range. The Pi Zero W has tiny solder pads for soldering a U.FL RF connector. Together with a small adapter cable you could use your standard WiFi antennas. You can read into this with a nice tutorial like this one: https://www.briandorey.com/post/raspberry-pi-zero-w-external-antenna-mod
 
-* Security related: Raspbian Stretch is **no longer vulnerable to the WPA2 Krack attack**. Since the system got patched you are totally safe with using any Raspberry Pi as AP or client **as long as all your other devices are secure**. So please always update your system!
+* Security related: Raspbian Stretch or newer is **no longer vulnerable to the WPA2 Krack attack**. Since the system got patched you are totally safe with using any Raspberry Pi as AP or client **as long as all your other devices are secure**. So please always update your system!
