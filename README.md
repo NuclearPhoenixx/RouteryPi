@@ -4,19 +4,21 @@
 
 ## Summary
 
-RouteryPi is a WiFi access point originally based on the Raspberry Pi Zero W. Together with a nice looking case and some status LEDs it makes a fun alternative to a commercial AP combining ease of setup and highly customizable software. The only downside of using a Raspberry Pi is it's relatively slow networking speed compared to high quality retail APs - nevertheless it has great potential and makes an even better addition if you want to upgrade some generic old AP that you found in your basement!
+RouteryPi is a WiFi access point originally based on the Raspberry Pi Zero W combined with a custom case and some status LEDs. The project has since expanded to helping users set up a WiFi access point (AP). This repo is aimed at working with Raspberry Pi OS, alternatively you could also use OpenWrt to achieve the same things (see https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi).
 
-**Update:** The brand new Raspberry Pi 4 features some really nice networking features. With an even faster CPU, 2.4 and 5GHz ac  WiFi, stand-alone Gigabit Ethernet and optional Power over Ethernet it looks like it can deliver "real" networking performance!
+Note however, that using a Raspberry Pi as your main AP can be a real bottleneck for your network. In the past all Raspi models had rather bad networking features, fortunately, this changed with the Pi 4. It features an even faster CPU and more RAM than any previous model and most importantly has 2.4 and 5GHz WiFi ac and Gigabit Ethernet! You can even run the Pi over PoE with the proper header.
+
+**Info:** Pi 4 performance still remains to be tested by me, I will update this file when I've got more information.
 
 ## Hardware
 
-This will run on any newer Raspberry Pi generation aiming at the ones with onboard WiFi, however this probably also works with compatible WiFi and LAN dongles.
+This will run on pretty much any Raspberry Pi generation aiming at the newer ones with onboard WiFi, however this probably also works with any compatible WiFi and LAN dongle.
 
-To get the best performance possible use the latest full-size Raspberry Pi available.
+To get the best performance possible I recommend you to use the Raspberry Pi 4 for all the before mentioned networking features. Nevertheless, this also works without a problem on a Pi Zero W for example, networking speeds will be slower though.
 
 ## Software
 
-This build uses the latest version of Raspbian which is Raspbian Stretch. You can download it on the official Raspberry Pi website, at https://www.raspberrypi.org/downloads/raspbian/. I guess you already know how to flash the image onto the SD Card - if you don't however, have a look at this tutorial: https://www.raspberrypi.org/documentation/installation/installing-images/
+This build uses the latest version of Raspberry Pi OS which is based on Debian Buster. You can download it on the official Raspberry Pi website, at https://www.raspberrypi.org/downloads/raspberry-pi-os/. I guess you already know how to flash the image onto the SD Card - if you don't however, have a look at this tutorial: https://www.raspberrypi.org/documentation/installation/installing-images/
 
 The heart of this whole installation will be 'hostapd' and 'bridge-utils' because we will be using the Pi as a network bridge between the LAN and WiFi. This means that **you will need an additonal DHCP and DNS server**. Nevertheless, this simplifies the whole installation a lot and makes it less error-prone. If you already have a router (which I assume you do) you can connect it to your RouteryPi and everything will work out of the box.
 
@@ -99,7 +101,7 @@ bridge_ports eth0 wlan0
 bridge_fd 0
 bridge_stp off
 ```
-This will result in the Pi using DHCP which means it can be used in **any existing** network. The downside of this is that you have to find out the IP address if you want to, let's say, use SSH. You could use a static IP address by changing the **br0**(!) interface config a little bit - just google 'static ip raspberry pi'. (For the lazy: https://duckduckgo.com/?q=static+ip+raspberry+pi)
+This will result in the Pi using DHCP which means it can be used in **any existing** network. The downside of this is that you have to find out the IP address if you want to, let's say, use SSH. You could use a static IP address by changing the **br0**(!) interface config a little bit - just google 'static ip raspberry pi'. (For the lazy: https://duckduckgo.com/?q=static+ip+raspberry+pi) **Info: I will update this section with instructions on how to do so.**
 
 **Final steps**
 
@@ -129,14 +131,16 @@ sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
 sudo systemctl start hostapd
 ```
+**Info: I will update this section after testing if the issue still exists.**
+
 
 ## Speed
 
-I tested my RouteryPi (Raspberry Pi W) under the following conditions:
+I tested my RouteryPi - a Raspberry Pi W - under the following conditions:
 
 ![normal results](screenshots/normal_result.png)
 
-One thing to take into consideration is that I (unfairly) tested my 5GHz WiFi which the Raspberry Pi Zero W cannot provide. I have to admit the RouteryPi's results are not that great, especially compared to my normal connection. But if you don't have a fast connection in the first place, this will be sufficent. Although the results seem pretty poor, I tested if you could watch Full HD (1080p) Youtube videos and play a little game like Minecraft on a server and it worked just fine!
+One thing to take into consideration is that I (unfairly) tested my 5GHz WiFi which the Raspberry Pi Zero W cannot provide. **Info: I will update the speed test for different models and also using the same WiFi frequency.** I have to admit the RouteryPi's results are not that great, especially compared to my normal connection. But if you don't have a fast connection in the first place, this will be sufficent. Although the results seem pretty poor, I tested if you could watch Full HD (1080p) Youtube videos and play a little game like Minecraft on a server and it worked just fine!
 
 ![routery results](screenshots/routery_result.png)
 
@@ -148,4 +152,4 @@ One thing to take into consideration is that I (unfairly) tested my 5GHz WiFi wh
 
 * You could also solder an external antenna onto the Pi if you aren't satisfied with it's range. The Pi Zero W has tiny solder pads for soldering a U.FL RF connector. Together with a small adapter cable you could use your standard WiFi antennas. You can read into this with a nice tutorial like this one: https://www.briandorey.com/post/raspberry-pi-zero-w-external-antenna-mod
 
-* Security related: Raspbian Stretch or newer is **no longer vulnerable to the WPA2 Krack attack**. Since the system got patched you are totally safe with using any Raspberry Pi as AP or client **as long as all your other devices are secure**. So please always update your system!
+* Security related (OLD): Raspbian Stretch or newer is **no longer vulnerable to the WPA2 Krack attack**. Since the system got patched you are totally safe with using any Raspberry Pi as AP or client **as long as all your other devices are secure**. So please always update your system!
