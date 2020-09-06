@@ -2,6 +2,8 @@
 
 ![issues](https://img.shields.io/github/issues/Phoenix1747/RouteryPi.svg?style=for-the-badge) ![open pr](https://img.shields.io/github/issues-pr-raw/phoenix1747/RouteryPi.svg?style=for-the-badge)
 
+### Info: This tutorial is likely outdated, for an up-to-date version of how to set up an AP visit the official [Raspberry Pi Documentation](https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md).
+
 ## Summary
 
 RouteryPi is a WiFi access point originally based on the Raspberry Pi Zero W combined with a custom case and some status LEDs. The project has since expanded to helping users set up a WiFi access point (AP). This repo is aimed at working with Raspberry Pi OS, alternatively you could also use OpenWrt to achieve the same things (see https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi).
@@ -101,7 +103,7 @@ bridge_ports eth0 wlan0
 bridge_fd 0
 bridge_stp off
 ```
-This will result in the Pi using DHCP which means it can be used in **any existing** network. The downside of this is that you have to find out the IP address if you want to, let's say, use SSH. You could use a static IP address by changing the **br0**(!) interface config a little bit - just google 'static ip raspberry pi'. (For the lazy: https://duckduckgo.com/?q=static+ip+raspberry+pi) **Info: I will update this section with instructions on how to do so.**
+This will result in the Pi using DHCP which means it can be used in **any existing** network. The downside of this is that you have to find out the IP address if you want to, let's say, use SSH. You could use a static IP address by changing the **br0**(!) interface config a little bit - just google 'static ip raspberry pi'. (For the lazy: https://duckduckgo.com/?q=static+ip+raspberry+pi)
 
 **Final steps**
 
@@ -131,7 +133,6 @@ sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
 sudo systemctl start hostapd
 ```
-**Info: I will update this section after testing if the issue still exists.**
 
 
 ## Speed
