@@ -138,7 +138,7 @@ sudo systemctl start hostapd
 I did some speed tests with my Raspberry Pi 4 and I have to admit I'm still very disappointed. Although the Pi features dual band wifi and gigabit ethernet the speeds really aren't outstanding.
 Maybe I did something wrong, however the fact that it's working leads me to believe that these results are what you get...
 
-If you get different speeds results, please let me know.
+If you get different speed results, please let me know.
 
 **2.4 GHz Test Router VS Pi:**
 
