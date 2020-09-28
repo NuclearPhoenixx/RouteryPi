@@ -10,8 +10,6 @@ RouteryPi is a WiFi access point originally based on the Raspberry Pi Zero W com
 
 Note however, that using a Raspberry Pi as your main AP can be a real bottleneck for your network. In the past all Raspi models had rather bad networking features, fortunately, this changed with the Pi 4. It features an even faster CPU and more RAM than any previous model and most importantly has 2.4 and 5GHz WiFi ac and Gigabit Ethernet! You can even run the Pi over PoE with the proper header.
 
-**Info:** Pi 4 performance still remains to be tested by me, I will update this file when I've got more information.
-
 ## Hardware
 
 This will run on pretty much any Raspberry Pi generation aiming at the newer ones with onboard WiFi, however this probably also works with any compatible WiFi and LAN dongle.
@@ -137,13 +135,18 @@ sudo systemctl start hostapd
 
 ## Speed
 
-I tested my RouteryPi - a Raspberry Pi W - under the following conditions:
+I did some speed tests with my Raspberry Pi 4 and I have to admit I'm still very disappointed. Although the Pi features dual band wifi and gigabit ethernet the speeds really aren't outstanding.
+Maybe I did something wrong, however the fact that it's working leads me to believe that tese results are what you get...
 
-![normal results](screenshots/normal_result.png)
+If you have some different speeds results, please let me know.
 
-One thing to take into consideration is that I (unfairly) tested my 5GHz WiFi which the Raspberry Pi Zero W cannot provide. **Info: I will update the speed test for different models and also using the same WiFi frequency.** I have to admit the RouteryPi's results are not that great, especially compared to my normal connection. But if you don't have a fast connection in the first place, this will be sufficent. Although the results seem pretty poor, I tested if you could watch Full HD (1080p) Youtube videos and play a little game like Minecraft on a server and it worked just fine!
+**2.4 GHz Test Router VS Pi:**
 
-![routery results](screenshots/routery_result.png)
+![router 2.4](screenshots/2.4ghz.png) ![pi 2.4](screenshots/pi2.4ghz.png)
+
+**5 GHz Test Router VS Pi:**
+
+![router 5](screenshots/5ghz.png) ![pi 5](screenshots/pi5ghz.png)
 
 ## Optional
 
