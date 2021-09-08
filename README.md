@@ -2,7 +2,9 @@
 
 ![issues](https://img.shields.io/github/issues/Phoenix1747/RouteryPi.svg?style=for-the-badge) ![open pr](https://img.shields.io/github/issues-pr-raw/phoenix1747/RouteryPi.svg?style=for-the-badge)
 
-### Info: This tutorial is likely outdated, for an up-to-date version of how to set up an AP visit the official [Raspberry Pi Documentation](https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md).
+### Info: This tutorial is likely outdated. For an up-to-date version of how to set up an AP visit the official Raspberry Pi Documentation:
+* [Setting up a Routed Wireless Access Point](https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point)
+* [Setting up a Bridged Wireless Access Point](https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-bridged-wireless-access-point)
 
 ## Summary
 
