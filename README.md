@@ -6,6 +6,8 @@
 * [Setting up a Routed Wireless Access Point](https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-routed-wireless-access-point)
 * [Setting up a Bridged Wireless Access Point](https://www.raspberrypi.org/documentation/computers/configuration.html#setting-up-a-bridged-wireless-access-point)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J61GLR3G)
+
 ## Summary
 
 RouteryPi is a WiFi access point originally based on the Raspberry Pi Zero W combined with a custom case and some status LEDs. The project has since expanded to helping users set up a WiFi access point (AP). This repo is aimed at working with Raspberry Pi OS, alternatively you could also use OpenWrt to achieve the same things (see https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi).
